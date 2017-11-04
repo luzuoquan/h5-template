@@ -32,6 +32,11 @@
     "webpack-merge": "^4.1.0"
   },
   "dependencies": {
-    "cropperjs": "^1.1.3"
+    "cropperjs": "^1.1.3",
+    "swiper": "^4.0.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/luzuoquan/h5-template.git"
   }
 }
