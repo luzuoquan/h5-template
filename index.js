@@ -1,11 +1,9 @@
-import Cropper from 'cropperjs'
-import './src/assets/css/cropper.min.css'
+import Swiper from 'swiper'
+import 'normalize.css'
+import './src/assets/css/main.css'
 
-const image = document.querySelector('#img')
-
-const cropper = new Cropper(image, {
-  aspectRatio: 16 / 9,
-  crop: function(e) {
-    console.log(e.detail)
-  }
+new Swiper('.swiper-container', {
+  direction: 'vertical'
 })
+
+

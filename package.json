@@ -33,6 +33,7 @@
   },
   "dependencies": {
     "cropperjs": "^1.1.3",
+    "normalize.css": "^7.0.0",
     "swiper": "^4.0.3"
   },
   "repository": {
