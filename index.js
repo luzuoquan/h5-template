@@ -4,8 +4,7 @@ import 'normalize.css'
 import './src/assets/css/main.css'
 
 new Swiper('.swiper-container', {
-  direction: 'vertical',
-  allowTouchMove: false
+  direction: 'vertical'
 })
 
 $('.type-it').typeIt({
