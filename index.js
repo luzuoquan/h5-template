@@ -3,8 +3,9 @@ import 'typeit'
 import 'normalize.css'
 import './src/assets/css/main.css'
 
-new Swiper('.swiper-container', {
-  direction: 'vertical'
+const swiper = new Swiper('.swiper-container', {
+  direction: 'vertical',
+  noSwiping: true
 })
 
 $('.type-it').typeIt({
