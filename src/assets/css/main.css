@@ -35,3 +35,8 @@ body {
 .swiper-container {
   overflow: hidden;
 }
+
+.u-select {
+  display: flex;
+  flex-direction: column;
+}

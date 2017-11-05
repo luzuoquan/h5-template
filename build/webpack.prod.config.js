@@ -2,17 +2,13 @@ const path = require('path')
 const webpack = require('webpack')
 const merge = require('webpack-merge')
 const baseWebpackConfig = require('./webpack.base.config')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
-const hotMiddlewareScript = 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true'
 
 module.exports = merge(baseWebpackConfig, {
-  devtool: "cheap-eval-source-map",
+  devtool: "source-map",
 	plugins: [
     new webpack.DefinePlugin({
-        'process.env.NODE_ENV': '"development"'
+        'process.env.NODE_ENV': '"production"'
     }),
-    new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new HtmlWebpackPlugin({
       filename: 'index.html',
