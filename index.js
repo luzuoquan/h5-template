@@ -5,7 +5,8 @@ import './src/assets/css/main.css'
 
 const swiper = new Swiper('.swiper-container', {
   direction: 'vertical',
-  noSwiping: true
+  simulateTouch: false,
+  followFinger: false
 })
 
 $('.type-it').typeIt({
