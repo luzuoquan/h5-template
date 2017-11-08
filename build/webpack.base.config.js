@@ -25,6 +25,9 @@ module.exports = {
     }, {
       test: require.resolve("../src/assets/lib/jquery-3.2.1.min.js"),
       use: "imports-loader?$=jquery"
+    }, {
+      test: require.resolve("../src/assets/lib/createjs.js"),
+      use: "imports-loader?this=>window"
     }]
   },
   plugins:[
