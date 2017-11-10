@@ -28,6 +28,19 @@ module.exports = {
     }, {
       test: require.resolve("../src/assets/lib/createjs.js"),
       use: "imports-loader?this=>window"
+    }, {
+      test: /\.(png|jpg|gif)$/,
+      use: [{
+        loader: 'url-loader',
+        options: {
+          limit: 10240
+        }
+      }]
+    }, {
+      test: /\.(html)$/,
+      use: {
+        loader: 'html-loader'
+      }
     }]
   },
   plugins:[

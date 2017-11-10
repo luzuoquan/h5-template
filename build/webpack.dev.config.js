@@ -14,10 +14,10 @@ module.exports = merge(baseWebpackConfig, {
     }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
-    new CopyWebpackPlugin([{
-      from: 'src/assets/images/**/*',
-      to: '[name].[ext]'
-    }]),
+    // new CopyWebpackPlugin([{
+    //   from: 'src/assets/images/**/*',
+    //   to: '[name].[ext]'
+    // }]),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'index.html',
