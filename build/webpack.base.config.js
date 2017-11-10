@@ -31,6 +31,8 @@ module.exports = {
     }, {
       test: /\.(png|jpg|gif)$/,
       use: [{
+        loader: 'file-loader'
+      }, {
         loader: 'url-loader',
         options: {
           limit: 10240
@@ -39,7 +41,10 @@ module.exports = {
     }, {
       test: /\.(html)$/,
       use: {
-        loader: 'html-loader'
+        loader: 'html-loader',
+        options: {
+          attrs: [':data-src']
+        }
       }
     }]
   },
