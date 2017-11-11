@@ -126,3 +126,31 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+.u-input {
+  background-color: rgba(0, 0, 0, .1);
+  border: none;
+  border-radius: 30px;
+  height: 40px;
+  line-height: 40px;
+  width: 70%;
+  margin-bottom: 20px;
+  padding-left: 10px;
+  font-size: 18px;
+}
+
+.u-input[placeholder] {
+  color: #fff;
+}
+
+.u-btn {
+  height: 40px;
+  line-height: 40px;
+  border-radius: 30px;
+  width: 70%;
+  text-align: center;
+  color: rgb(189, 188, 188);
+  border: 1px solid rgb(177, 175, 175);
+  background-color: rgba(0, 0, 0, .1);
+  text-decoration: none;
+}

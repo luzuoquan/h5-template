@@ -62,8 +62,12 @@ $('.u-role').on('click', function () {
   if ($(this).attr('data-type') !== 'newer') {
     $('#J-slide-7').css('background-image', `url(${require('./src/assets/images/step-2.png')}`)
     $('#J-register-btn').hide();
+    $('#J-query-form').show();
+    $('#J-info-query').show();
   } else {
     $('#J-register-btn').show();
+    $('#J-query-form').hide();
+    $('#J-info-query').hide();
     $('#J-slide-7').css('background-image', `url(${require('./src/assets/images/step-2-1.png')}`)
   }
   swiper.allowSlideNext = true
@@ -71,6 +75,30 @@ $('.u-role').on('click', function () {
   setTimeout(() => {
     swiper.allowSlideNext = false
   },0)
+})
+
+$('#J-info-query').on('click', function() {
+  const userName = $('#J-username')
+  const phone = $('#J-phone')
+  if (userName.val() === '') {
+    alert('请输入您的姓名')
+    return
+  }
+  if (phone.val() === '') {
+    alert('请输入您的电话号码')
+    return
+  }
+
+  $.ajax({
+    url: `http://h5.pillele.cn/auth`,
+    data: {
+      username: userName.val(),
+      mobile: phone.val()
+    }
+  })
+    .then(res => {
+      console.info(res)
+    })
 })
 
 
