@@ -33,7 +33,8 @@ module.exports = {
       use: [{
         loader: 'file-loader',
         options: {
-          name: '[name].[ext]'
+          name: '[name].[ext]',
+          publicPath: '/',
         }
       }]
     }, {
@@ -41,7 +42,7 @@ module.exports = {
       use: {
         loader: 'html-loader',
         options: {
-          attrs: [':data-src']
+          attrs: false
         }
       }
     }]
