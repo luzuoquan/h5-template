@@ -52,8 +52,13 @@ body {
 }
 
 .u-loading {
+  color: #fff;
   position: absolute;
   top: 70%;
   left: 50%;
   transform: translate(-50%,0);
+}
+
+.slide-img-bg {
+  background-size: contain;
 }

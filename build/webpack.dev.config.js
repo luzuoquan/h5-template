@@ -6,6 +6,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const hotMiddlewareScript = 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true'
 
+Object.keys(baseWebpackConfig.entry).forEach(key => {
+	baseWebpackConfig.entry[key] = [hotMiddlewareScript].concat(baseWebpackConfig.entry[key])
+})
+
 module.exports = merge(baseWebpackConfig, {
   devtool: "cheap-eval-source-map",
 	plugins: [

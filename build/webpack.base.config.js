@@ -37,14 +37,6 @@ module.exports = {
           publicPath: '/',
         }
       }]
-    }, {
-      test: /\.(html)$/,
-      use: {
-        loader: 'html-loader',
-        options: {
-          attrs: false
-        }
-      }
     }]
   },
   plugins:[
