@@ -1,6 +1,7 @@
 const path = require('path')
 const webpack = require('webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const env = process.env.NODE_ENV
 
 module.exports = {
   entry: {
@@ -35,6 +36,7 @@ module.exports = {
         options: {
           name: '[name].[ext]',
           publicPath: '/',
+          outputPath: 'static/images/'
         }
       }]
     }]

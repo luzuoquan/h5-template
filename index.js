@@ -6,6 +6,8 @@ import { setTimeout } from 'timers';
 
 // require('html-loader!./index.html')
 
+let queryType  = 1 // 1: 员工, 2: 用户
+
 const queue = new createjs.LoadQueue(true)
 
 const manifest = [
@@ -64,6 +66,7 @@ $('.u-role').on('click', function () {
     $('#J-register-btn').hide();
     $('#J-query-form').show();
     $('#J-info-query').show();
+    queryType = $(this).attr('data-type') === 'staff' ? 1 : 2
   } else {
     $('#J-register-btn').show();
     $('#J-query-form').hide();
@@ -91,9 +94,11 @@ $('#J-info-query').on('click', function() {
 
   $.ajax({
     url: `http://h5.pillele.cn/auth`,
+    method: 'post',
     data: {
       username: userName.val(),
-      mobile: phone.val()
+      mobile: phone.val(),
+      category: queryType
     }
   })
     .then(res => {
