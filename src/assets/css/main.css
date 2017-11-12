@@ -3,6 +3,7 @@ html, body {
   height: 100%;
 }
 body {
+  margin: 0;
   background: #eee;
   font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
   font-size: 14px;

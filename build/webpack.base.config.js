@@ -30,6 +30,9 @@ module.exports = {
       test: require.resolve("../src/assets/lib/createjs.js"),
       use: "imports-loader?this=>window"
     }, {
+      test: require.resolve("../src/assets/lib/jweixin-1.2.0.js"),
+      use: "imports-loader?this=>window,define=>false"
+    }, {
       test: /\.(png|jpg|gif)$/,
       use: [{
         loader: 'file-loader',

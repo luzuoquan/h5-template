@@ -1,8 +1,11 @@
 import Swiper from 'swiper'
+import Wechat from './src/js/wechat.js'
 import './src/assets/lib/createjs.js'
+// import './src/assets/lib/jweixin-1.2.0.js'
 import 'normalize.css'
 import './src/assets/css/main.css'
-import { setTimeout } from 'timers';
+
+// require('./src/assets/lib/jweixin-1.2.0.js')
 
 // require('html-loader!./index.html')
 
@@ -42,6 +45,8 @@ const handleComplete = () => {
   frontManifest.forEach(item => {
     $(item.id).css('background-image', `url(${item.src}`)
   })
+  const wechat = new Wechat()
+  console.warn(wechat)
 }
 
 queue.on("progress", handleProgress, this)
