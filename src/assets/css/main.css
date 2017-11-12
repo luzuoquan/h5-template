@@ -106,15 +106,15 @@ body {
 }
 
 .u-staff {
-  background-image: url('../images/staff.png');
+  background-image: url('http://img.pillele.cn/staff.png');
 }
 
 .u-user {
-  background-image: url('../images/user.png');
+  background-image: url('http://img.pillele.cn/user.png');
 }
 
 .u-newer {
-  background-image: url('../images/other.png');
+  background-image: url('http://img.pillele.cn/other.png');
 }
 
 .u-btn {
