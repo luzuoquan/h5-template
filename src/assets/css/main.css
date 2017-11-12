@@ -155,3 +155,31 @@ body {
   background-color: rgba(0, 0, 0, .1);
   text-decoration: none;
 }
+
+.u-build {
+  top: 90%;
+}
+
+.u-input-multiple {
+  box-sizing: border-box;
+  font-size: 16px;
+  line-height: 1.5;
+  padding: 5px;
+  position: absolute;
+  height: 150px;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid rgb(177, 175, 175);
+  background-color: rgba(0, 0, 0, .1);
+  width: 80%;
+  color: #fff;
+}
+
+input::-webkit-input-placeholder {
+  color: #fff;
+}
+
+textarea::-webkit-input-placeholder {
+  color: #fff;
+}

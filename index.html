@@ -5,12 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>惠金所，感谢有你e</title>
+  <style>
+    body {
+      margin: 0;
+      background: #eee;
+      font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      color:#000;
+      margin: 0;
+      padding: 0;
+      text-size-adjust: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+  </style>
 </head>
 <body>
   <div class="swiper-container">
     <div class="swiper-wrapper">
       <div class="swiper-slide">
-        <img class="slide-img" src="${require('./src/assets/images/loading.png')}" alt="loading">
+        <img class="slide-img" src="http://img.pillele.cn/loading.png" alt="loading">
         <span id="J-loading" class="u-loading"></span>
       </div>
       <div class="swiper-slide slide-img-bg" id="J-slide-1">
@@ -45,15 +58,10 @@
         <span class="u-btn" id="J-info-query">确认</span>
         <a id="J-register-btn" href="https://www.hfax.com/promo/m/tyb1" class="u-btn">立即注册</a>
       </div>
-      <div class="swiper-slide">
-        <div class="u-select">
-          <div>
-              您是以下哪一种：
-          </div>
-          <p>惠金所同事</p>
-          <p>惠金所用户</p>
-          <p>惠金所的新朋友</p>
-        </div>
+      <div class="swiper-slide slide-img-bg">
+          <img class="slide-img" src="" alt="" id="J-slide-8">
+        <textarea class="u-input-multiple" id="J-custom-text" rows="10" placeholder="点击这里，填写你想对惠金所说的话(20字以内)"></textarea>
+        <span class="u-btn u-build" id="J-build">生成海报</span>
       </div>
       <div class="swiper-slide">Slide 9</div>
       <div class="swiper-slide">Slide 10</div>

@@ -12,7 +12,7 @@ export default class Wechat {
       .done(json => {
         this.wx.config(JSON.parse(json))
       })
-      .done(() => {
+      .then(() => {
         this.wx.ready(() => {
           this.wx.onMenuShareTimeline({
             title: '惠金所，感谢有你e',
