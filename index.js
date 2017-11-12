@@ -1,17 +1,19 @@
 import Swiper from 'swiper'
 import Wechat from './src/js/wechat.js'
+import Draw from './src/js/drawPicture.js'
 import './src/assets/lib/createjs.js'
-// import './src/assets/lib/jweixin-1.2.0.js'
 import 'normalize.css'
 import './src/assets/css/main.css'
-
-// require('./src/assets/lib/jweixin-1.2.0.js')
-
-// require('html-loader!./index.html')
 
 let queryType  = 1 // 1: 员工, 2: 用户
 
 let wechat // 分享实例
+
+let url // 待合成的图片src
+
+let description  // 待合成的祝福语
+
+let title // 待合成的人
 
 const queue = new createjs.LoadQueue(true)
 
@@ -38,6 +40,26 @@ const frontManifest = [
   {id: '#J-slide-front-4', src: 'http://img.pillele.cn/front-3.png'},
   {id: '#J-slide-front-5', src: 'http://img.pillele.cn/front-4.png'}
 ]
+
+const staffDefaultText = [
+  '作为惠金所人我感到骄傲，也希望惠金所为我骄傲。',
+  '惠金所让我觉得，金融世界比我想象的还要有趣。',
+  '来到惠金所，我真正明白了金融人该有怎样的敬畏之心。'
+]
+
+const userDefaultText = [
+  '你对金融的敬畏我看得到，与你携手，我将无畏。',
+  '对你期待很高，你的专业不曾令我失望。',
+  '财富升值的路上，有你相伴，我放心。'
+]
+
+// const draw = new Draw({
+//   title: '测试',
+//   description: '财富升值的路上，有你相伴，我放心。',
+//   src: 'http://img.pillele.cn/staff-3.png',
+//   height: $('body').height(),
+//   width: $('body').width()
+// })
 
 
 queue.loadManifest(manifest)
@@ -66,7 +88,6 @@ const swiper = new Swiper('.swiper-container', {
   followFinger: false,
   on: {
     slideChangeTransitionStart: function () {
-      console.info(this)
       this.allowSlideNext = this.activeIndex !== 6
     }
   }
@@ -116,15 +137,26 @@ $('#J-info-query').on('click', function() {
     }
   })
     .then(res => {
-      console.info(res)
+      if (res.code === '0000') {
+
+      } else {
+        alert('发生了一些错误')
+      }
     })
     .always(() => {
-      let url
       const random = Math.floor(Math.random() * 3)
       if (queryType === 1) {
+        const username = '杨冀川'
+        const joinTime = '2015年07月01日'
         url = manifest.filter(item => item.id === '#J-slide-8' && item.target === 'staff')[random].src
+        title = `${username}在${joinTime}\r加入了惠金所`
+        description = staffDefaultText[random]
       } else {
+        const username = '张猛'
+        const joinTime = '4'
         url = manifest.filter(item => item.id === '#J-slide-8' && item.target === 'user')[random].src
+        title = `今天是${username}加入惠金所\r第${joinTime}天`
+        description = userDefaultText[random]
       }
       $('#J-slide-8').attr('src', `${url}`)
       swiper.allowSlideNext = true
@@ -136,7 +168,23 @@ $('#J-info-query').on('click', function() {
 })
 
 $('#J-build').on('click', function() {
-  alert(123)
+  const draw = new Draw({
+    title: title,
+    description: $('#J-custom-text').val() || description,
+    src: url,
+    height: $('body').height(),
+    width: $('body').width()
+  })
+  setTimeout(() => {
+    const image = draw.canvas.toDataURL('image/png')
+    const img = new Image()
+    img.src = image 
+    img.onload = () => {
+      $('#J-slide-9').attr('src', `${image}`)
+      swiper.allowSlideNext = true
+      swiper.slideNext(300, false)
+    }
+  },300)
 })
 
 
