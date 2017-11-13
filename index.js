@@ -143,7 +143,7 @@ $('#J-info-query').on('click', function() {
     url: `http://h5.pillele.cn/auth`,
     method: 'post',
     data: {
-      username: userName.val(),
+      usname: userName.val(),
       mobile: phone.val(),
       category: queryType
     }
