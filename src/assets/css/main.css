@@ -233,6 +233,28 @@ textarea::-webkit-input-placeholder {
   background-color: #3a3a3a;
 }
 
+.u-info-modal {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, .23);
+}
+
+.u-info {
+  position: absolute;
+  width: 80%;
+  height: 200px;
+  border-radius: 13px;
+  background-color: rgba(170, 123, 83, .8);
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
 .u-delete {
   position: absolute;
   display: inline-block;
