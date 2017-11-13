@@ -234,6 +234,7 @@ textarea::-webkit-input-placeholder {
 }
 
 .u-info-modal {
+  display: none;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -243,24 +244,54 @@ textarea::-webkit-input-placeholder {
   background-color: rgba(0, 0, 0, .23);
 }
 
-.u-info {
+.u-info-section {
   position: absolute;
   width: 80%;
   height: 200px;
   border-radius: 13px;
+  padding: 15px;
+  box-sizing: border-box;
   background-color: rgba(170, 123, 83, .8);
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 18px;
+}
+
+.u-info {
+  font-size: 14px;
+  line-height: 1.5;
+  text-align: center;
+  width: calc(100% - 30px);
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translate(0, -50%);
+  transform: translate(0, -50%);
 }
 
 .u-delete {
   position: absolute;
   display: inline-block;
-  width: 43px;
-  height: 43px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   top: 82px;
   right: 23px;
+  background-image: url('http://img.pillele.cn/delete.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.u-info-delete {
+  position: absolute;
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  top: 15px;
+  right: 15px;
+  background-image: url('http://img.pillele.cn/delete-1.png');
+  background-repeat: no-repeat;
+  background-size: contain;
 }

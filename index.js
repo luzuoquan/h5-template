@@ -123,11 +123,19 @@ $('#J-info-query').on('click', function() {
   const userName = $('#J-username')
   const phone = $('#J-phone')
   if (userName.val() === '') {
-    alert('请输入您的姓名')
+    $('#J-info-text').html('请输入您的姓名')
+    $('#J-info-modal').show()
     return
   }
   if (phone.val() === '') {
-    alert('请输入您的电话号码')
+    $('#J-info-text').html('请输入您的电话号码')
+    $('#J-info-modal').show()
+    return
+  }
+
+  if (phone.val() !== '' && !/^1\d{10}$/.test(phone.val())) {
+    $('#J-info-text').html('请检查手机号码位数')
+    $('#J-info-modal').show()
     return
   }
 
@@ -142,36 +150,42 @@ $('#J-info-query').on('click', function() {
   })
     .then(res => {
       if (res.code === '0000') {
-
+        const username = res.usname
+        const joinTime = res['join_time']
+        const random = Math.floor(Math.random() * 3)
+        if (queryType === 1) {
+          url = manifest.filter(item => item.id === '#J-slide-8' && item.target === 'staff')[random].src
+          title = `${username}在${joinTime}\r加入了惠金所`
+          description = staffDefaultText[random]
+          $('#J-shape-employee').show()
+          $('#J-shape-user').hide()
+        } else {
+          url = manifest.filter(item => item.id === '#J-slide-8' && item.target === 'user')[random].src
+          title = `今天是${username}加入惠金所\r第${joinTime}天`
+          description = userDefaultText[random]
+          $('#J-shape-employee').hide()
+          $('#J-shape-user').show()
+        }
+        $('#J-slide-8').attr('src', `${url}`)
+        swiper.allowSlideNext = true
+        swiper.slideNext(300, false)
+        setTimeout(() => {
+          swiper.allowSlideNext = false
+        },0)
+      } else if (queryType !== 1 && (res.code === '0001' || res.code === '0004')) {
+        $('#J-info-text').html('网络异常 请稍后再试')
+        $('#J-info-modal').show()
+      } else if (queryType !== 1 && res.code === '0003') {
+        // 
+        $('#J-info-text').html('您可能还未进行实名认证，<br/>请打开惠金所APP，实名认证后再来哦。')
+        $('#J-info-modal').show()
+      } else if (queryType !== 1 && res.code === '0002') {
+        $('#J-info-text').html('您填写的信息可能有误<br/>请核实后重新提交')
+        $('#J-info-modal').show()
       } else {
-        alert('发生了一些错误')
+        $('#J-info-text').html('OPPS，您可能遇到了以下情况，无法继续访问：<br/>1、点错了？请返回上一页，选择正确身份呢。<br/>2、11月8号后入职的新同事信息这次暂未收录哦~下个节日再见！')
+        $('#J-info-modal').show()
       }
-    })
-    .always(() => {
-      const random = Math.floor(Math.random() * 3)
-      if (queryType === 1) {
-        const username = '杨冀川'
-        const joinTime = '2015年07月01日'
-        url = manifest.filter(item => item.id === '#J-slide-8' && item.target === 'staff')[random].src
-        title = `${username}在${joinTime}\r加入了惠金所`
-        description = staffDefaultText[random]
-        $('#J-shape-employee').show()
-        $('#J-shape-user').hide()
-      } else {
-        const username = '张猛'
-        const joinTime = '4'
-        url = manifest.filter(item => item.id === '#J-slide-8' && item.target === 'user')[random].src
-        title = `今天是${username}加入惠金所\r第${joinTime}天`
-        description = userDefaultText[random]
-        $('#J-shape-employee').hide()
-        $('#J-shape-user').show()
-      }
-      $('#J-slide-8').attr('src', `${url}`)
-      swiper.allowSlideNext = true
-      swiper.slideNext(300, false)
-      setTimeout(() => {
-        swiper.allowSlideNext = false
-      },0)
     })
 })
 
@@ -234,4 +248,8 @@ $('#J-delete-modal').on('click', function () {
   $('#J-modal').hide()
 })
 
+$('#J-info-delete').on('click', function () {
+  $('#J-info-text').html()
+  $('#J-info-modal').hide()
+})
 
