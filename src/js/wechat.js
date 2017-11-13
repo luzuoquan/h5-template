@@ -36,7 +36,7 @@ export default class Wechat {
           })
         })
     } else {
-      this.wx.config(JSON.parse(window.wxConfig))
+      this.wx.config(window.wxConfig)
       this.wx.ready(() => {
         this.wx.onMenuShareTimeline({
           title: '惠金所，感谢有你',

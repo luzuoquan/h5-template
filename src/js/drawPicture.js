@@ -8,6 +8,7 @@ export default class Draw {
     this.src = param.src
     this.title = param.title || '测试图片'
     this.description = param.description || '测试描述'
+    this.type = param.type
     this.draw()
   }
   draw () {
@@ -20,10 +21,22 @@ export default class Draw {
     image.onload = () => {
       this.canvasContext.clearRect(0, 0, 1000, 1000)
       this.canvasContext.drawImage(image, 0, 0, this.width, this.height)
-      this.canvasContext.font = 'PingFangSC-Light,PingFang SC,Helvetica normal 30px arial'
+      this.canvasContext.font = 'italic bold 24px PingFangSC-Light,Helvetica'
       this.canvasContext.fillStyle = 'white'
-      this.canvasContext.fillText(this.title, 50, 150)
-      this.canvasContext.fillText(this.description, 50, 200)
+      this.canvasContext.textAlign = 'center'
+      const splitIndex = this.title.lastIndexOf(this.type === 1 ? '加' : '第')
+
+      // title
+      this.canvasContext.fillText(this.title.substr(0, splitIndex), this.width / 2, 150)
+      this.canvasContext.fillText(this.title.substr(splitIndex), this.width / 2, 184)
+
+      // description
+      if (this.description.length > 10) {
+        this.canvasContext.fillText(this.description.substr(0, 10), this.width / 2, 250)
+        this.canvasContext.fillText(this.description.substr(10), this.width / 2, 284)
+      } else {
+        this.canvasContext.fillText(this.description, this.width / 2, 250)
+      }
     }
   }
 }

@@ -50,7 +50,7 @@ body {
 
 .slide-img {
   width: 100%;
-  max-height: 100%;
+  max-width: 100%;
   display: block;
 }
 
@@ -150,7 +150,7 @@ body {
   border-radius: 30px;
   width: 70%;
   text-align: center;
-  color: rgb(189, 188, 188);
+  color: #fff;
   border: 1px solid rgb(177, 175, 175);
   background-color: rgba(0, 0, 0, .1);
   text-decoration: none;
@@ -182,4 +182,63 @@ input::-webkit-input-placeholder {
 
 textarea::-webkit-input-placeholder {
   color: #fff;
+}
+
+.u-shape-employee {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  top: calc(90% - 40px);
+  width: 172px;
+  height: 20px;
+  background-size: contain;
+  background-image: url('http://img.pillele.cn/shape-employee.png');
+  background-repeat: no-repeat;
+}
+
+.u-shape-user {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  top: calc(90% - 40px);
+  width: 140px;
+  height: 20px;
+  background-size: contain;
+  background-image: url('http://img.pillele.cn/shape-user.png');
+  background-repeat: no-repeat;
+}
+
+.u-gift-btn {
+  top: 90%;
+}
+
+.u-gift-text {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  -webkit-transform: translate(-50%, 0);
+  transform: translate(-50%, 0);
+  color: #fff;
+  font-size: 12px;
+}
+
+.u-modal {
+  display: none;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  background-color: #3a3a3a;
+}
+
+.u-delete {
+  position: absolute;
+  display: inline-block;
+  width: 43px;
+  height: 43px;
+  border-radius: 50%;
+  top: 82px;
+  right: 23px;
 }

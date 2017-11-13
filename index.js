@@ -15,6 +15,8 @@ let description  // 待合成的祝福语
 
 let title // 待合成的人
 
+  // shape-employee shape-user activity-user activity-staff delete delete-1
+
 const queue = new createjs.LoadQueue(true)
 
 const manifest = [
@@ -31,7 +33,9 @@ const manifest = [
   {id: '#J-slide-8',  target: 'staff', src: 'http://img.pillele.cn/staff-3.png'},
   {id: '#J-slide-8',  target: 'user', src: 'http://img.pillele.cn/user-1.png'},
   {id: '#J-slide-8',  target: 'user', src: 'http://img.pillele.cn/user-2.png'},
-  {id: '#J-slide-8',  target: 'user', src: 'http://img.pillele.cn/user-3.png'}
+  {id: '#J-slide-8',  target: 'user', src: 'http://img.pillele.cn/user-3.png'},
+  {id: '#J-staff-tip',  target: 'bg', src: 'http://img.pillele.cn/activity-staff.jpg'},
+  {id: '#J-user-tip',  target: 'bg', src: 'http://img.pillele.cn/activity-user.jpg'}
 ]
 
 const frontManifest = [
@@ -151,12 +155,16 @@ $('#J-info-query').on('click', function() {
         url = manifest.filter(item => item.id === '#J-slide-8' && item.target === 'staff')[random].src
         title = `${username}在${joinTime}\r加入了惠金所`
         description = staffDefaultText[random]
+        $('#J-shape-employee').show()
+        $('#J-shape-user').hide()
       } else {
         const username = '张猛'
         const joinTime = '4'
         url = manifest.filter(item => item.id === '#J-slide-8' && item.target === 'user')[random].src
         title = `今天是${username}加入惠金所\r第${joinTime}天`
         description = userDefaultText[random]
+        $('#J-shape-employee').hide()
+        $('#J-shape-user').show()
       }
       $('#J-slide-8').attr('src', `${url}`)
       swiper.allowSlideNext = true
@@ -167,14 +175,15 @@ $('#J-info-query').on('click', function() {
     })
 })
 
-$('#J-build').on('click', function() {
+$('#J-build').on('click', function () {
   let wxTitle
   const draw = new Draw({
     title: title,
     description: $('#J-custom-text').val() || description,
     src: url,
     height: $('body').height(),
-    width: $('body').width()
+    width: $('body').width(),
+    type: queryType
   })
   if (queryType === 1) {
     wxTitle = '杨冀川奋斗在惠金所'
@@ -208,6 +217,21 @@ $('#J-build').on('click', function() {
       swiper.slideNext(300, false)
     }
   },300)
+})
+
+$('#J-gift').on('click', function () {
+  $('#J-modal').show()
+  if (queryType === 1) {
+    $('#J-staff-tip').show()
+    $('#J-user-tip').hide()
+  } else {
+    $('#J-staff-tip').hide()
+    $('#J-user-tip').show()
+  }
+})
+
+$('#J-delete-modal').on('click', function () {
+  $('#J-modal').hide()
 })
 
 
