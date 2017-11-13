@@ -168,12 +168,35 @@ $('#J-info-query').on('click', function() {
 })
 
 $('#J-build').on('click', function() {
+  let wxTitle
   const draw = new Draw({
     title: title,
     description: $('#J-custom-text').val() || description,
     src: url,
     height: $('body').height(),
     width: $('body').width()
+  })
+  if (queryType === 1) {
+    wxTitle = '杨冀川奋斗在惠金所'
+  } else {
+    wxTitle = '张猛在这升值财富'
+  }
+  wechat.wx.onMenuShareTimeline({
+    title: wxTitle,
+    link: 'http://h5.pillele.cn/thanksgiving',
+    imgUrl: 'http://img.pillele.cn/1.png',
+    success() {
+      alert('已分享')
+    }
+  })
+  wechat.wx.onMenuShareAppMessage({
+    title: wxTitle,
+    desc: '彼此成就，与有荣焉',
+    link: 'http://h5.pillele.cn/thanksgiving',
+    imgUrl: 'http://img.pillele.cn/1.png',
+    success() {
+      alert('已分享')
+    }
   })
   setTimeout(() => {
     const image = draw.canvas.toDataURL('image/png')
