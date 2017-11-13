@@ -7,7 +7,8 @@ const baseWebpackConfig = require('./webpack.base.config')
 
 module.exports = merge(baseWebpackConfig, {
   output: {
-		path: path.resolve(__dirname, '../dist/'),
+    path: path.resolve(__dirname, '../dist/'),
+    publicPath: 'http://h5.pillele.cn/',
 		filename: 'static/js/[name].[hash].js',
 		chunkFilename: 'static/js/[id].js'
 	},
