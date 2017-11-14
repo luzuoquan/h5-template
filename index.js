@@ -1,6 +1,6 @@
 import Swiper from 'swiper'
 import Wechat from './src/js/wechat.js'
-import Draw from './src/js/drawPicture.js'
+import Draw from './src/js/draw.js'
 import './src/assets/lib/createjs.js'
 import 'normalize.css'
 import './src/assets/css/main.css'
@@ -20,22 +20,22 @@ let title // 待合成的人
 const queue = new createjs.LoadQueue(true)
 
 const manifest = [
-  {id: '#J-slide-1',  target: 'bg', src: 'http://img.pillele.cn/cover.png'},
-  {id: '#J-slide-2',  target: 'bg', src: 'http://img.pillele.cn/bg.png'},
-  {id: '#J-slide-3',  target: 'bg', src: 'http://img.pillele.cn/bg.png'},
-  {id: '#J-slide-4',  target: 'bg', src: 'http://img.pillele.cn/bg.png'},
-  {id: '#J-slide-5',  target: 'bg', src: 'http://img.pillele.cn/bg.png'},
-  {id: '#J-slide-6',  target: 'bg', src: 'http://img.pillele.cn/step-1.png'},
-  {id: '#J-slide-7',  target: 'newer',  src: 'http://img.pillele.cn/step-2-1.png'},
-  {id: '#J-slide-7',  target: 'inner', src: 'http://img.pillele.cn/step-2.png'},
-  {id: '#J-slide-8',  target: 'staff', src: 'http://img.pillele.cn/staff-1.png'},
-  {id: '#J-slide-8',  target: 'staff', src: 'http://img.pillele.cn/staff-2.png'},
-  {id: '#J-slide-8',  target: 'staff', src: 'http://img.pillele.cn/staff-3.png'},
-  {id: '#J-slide-8',  target: 'user', src: 'http://img.pillele.cn/user-1.png'},
-  {id: '#J-slide-8',  target: 'user', src: 'http://img.pillele.cn/user-2.png'},
-  {id: '#J-slide-8',  target: 'user', src: 'http://img.pillele.cn/user-3.png'},
-  {id: '#J-staff-tip',  target: 'bg', src: 'http://img.pillele.cn/activity-staff.jpg'},
-  {id: '#J-user-tip',  target: 'bg', src: 'http://img.pillele.cn/activity-user.jpg'}
+  {id: '#J-slide-1', isSrc: true,  target: 'bg', src: 'http://img.pillele.cn/cover.png'},
+  {id: '#J-slide-2', isSrc: true,  target: 'bg', src: 'http://img.pillele.cn/bg.png'},
+  {id: '#J-slide-3', isSrc: true,  target: 'bg', src: 'http://img.pillele.cn/bg.png'},
+  {id: '#J-slide-4', isSrc: true,  target: 'bg', src: 'http://img.pillele.cn/bg.png'},
+  {id: '#J-slide-5', isSrc: true,  target: 'bg', src: 'http://img.pillele.cn/bg.png'},
+  {id: '#J-slide-6', isSrc: true,  target: 'bg', src: 'http://img.pillele.cn/step-1.png'},
+  {id: '#J-slide-7', isSrc: true,  target: 'newer',  src: 'http://img.pillele.cn/step-2-1.png'},
+  {id: '#J-slide-7', isSrc: true,  target: 'inner', src: 'http://img.pillele.cn/step-2.png'},
+  {id: '#J-slide-8', isSrc: true,  target: 'staff', src: 'http://img.pillele.cn/staff-1.png'},
+  {id: '#J-slide-8', isSrc: true,  target: 'staff', src: 'http://img.pillele.cn/staff-2.png'},
+  {id: '#J-slide-8', isSrc: true,  target: 'staff', src: 'http://img.pillele.cn/staff-3.png'},
+  {id: '#J-slide-8', isSrc: true,  target: 'user', src: 'http://img.pillele.cn/user-1.png'},
+  {id: '#J-slide-8', isSrc: true,  target: 'user', src: 'http://img.pillele.cn/user-2.png'},
+  {id: '#J-slide-8', isSrc: true,  target: 'user', src: 'http://img.pillele.cn/user-3.png'},
+  {id: '#J-staff-tip', isSrc: false,  target: 'bg', src: 'http://img.pillele.cn/activity-staff.jpg'},
+  {id: '#J-user-tip', isSrc: false,  target: 'bg', src: 'http://img.pillele.cn/activity-user.jpg'}
 ]
 
 const frontManifest = [
@@ -74,7 +74,12 @@ const handleProgress = event => {
 
 const handleComplete = () => {
   manifest.forEach(item => {
-    $(item.id).css('background-image', `url(${item.src}`)
+    if (item.isSrc) {
+      $(item.id).css('background-image', `url(${item.src}`)
+    } else {
+      $(item.id).attr('src', `${item.src}`)
+    }
+    
   })
   frontManifest.forEach(item => {
     $(item.id).css('background-image', `url(${item.src}`)
@@ -167,6 +172,7 @@ $('#J-info-query').on('click', function() {
           $('#J-shape-user').show()
         }
         $('#J-slide-8').attr('src', `${url}`)
+        $('#J-role-info').html(title)
         swiper.allowSlideNext = true
         swiper.slideNext(300, false)
         setTimeout(() => {

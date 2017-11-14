@@ -12,12 +12,13 @@ export default class Draw {
     this.draw()
   }
   draw () {
+    const devicePixelRatio = window.devicePixelRatio || 1
     const image = new Image()
     image.setAttribute('crossOrigin', 'anonymous')
     image.src = this.src
-    this.canvas.width = this.width * 2
-    this.canvas.height = this.height * 2
-    this.canvasContext.scale(2,2)
+    this.canvas.width = this.width * devicePixelRatio
+    this.canvas.height = this.height * devicePixelRatio
+    this.canvasContext.scale(devicePixelRatio, devicePixelRatio)
     image.onload = () => {
       this.canvasContext.clearRect(0, 0, 1000, 1000)
       this.canvasContext.drawImage(image, 0, 0, this.width, this.height)
@@ -31,6 +32,7 @@ export default class Draw {
       this.canvasContext.fillText(this.title.substr(splitIndex), this.width / 2, 184)
 
       // description
+      this.canvasContext.font = 'italic bold 22px PingFangSC-Light,Helvetica'
       if (this.description.length > 10) {
         this.canvasContext.fillText(this.description.substr(0, 10), this.width / 2, 250)
         this.canvasContext.fillText(this.description.substr(10), this.width / 2, 284)
