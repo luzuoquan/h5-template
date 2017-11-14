@@ -49,6 +49,7 @@ body {
 }
 
 .slide-img {
+  height: 100%;
   width: 100%;
   max-width: 100%;
   display: block;
@@ -130,7 +131,7 @@ body {
   background-size: contain;
   background-repeat: no-repeat;
   position: absolute;
-  top: 80%;
+  bottom: 100px;
   left: 50%;
   transform: translate(-50%, -50%);
 }
@@ -152,6 +153,7 @@ body {
 }
 
 .u-btn {
+  box-sizing: border-box;
   height: 40px;
   line-height: 40px;
   border-radius: 30px;
@@ -164,7 +166,7 @@ body {
 }
 
 .u-build {
-  top: 90%;
+  bottom: 30px;
 }
 
 .u-input-multiple {
@@ -181,6 +183,8 @@ body {
   background-color: rgba(0, 0, 0, .1);
   width: 80%;
   color: #fff;
+  resize: none;
+  border-radius: 10px;
 }
 
 input::-webkit-input-placeholder {
@@ -195,7 +199,7 @@ textarea::-webkit-input-placeholder {
   position: absolute;
   left: 50%;
   transform: translate(-50%, -50%);
-  top: calc(90% - 40px);
+  bottom: 90px;
   width: 172px;
   height: 20px;
   background-size: contain;
@@ -207,7 +211,7 @@ textarea::-webkit-input-placeholder {
   position: absolute;
   left: 50%;
   transform: translate(-50%, -50%);
-  top: calc(90% - 40px);
+  bottom: 90px;
   width: 140px;
   height: 20px;
   background-size: contain;
@@ -216,7 +220,7 @@ textarea::-webkit-input-placeholder {
 }
 
 .u-gift-btn {
-  top: 90%;
+  bottom: 30px;
 }
 
 .u-gift-text {
@@ -282,7 +286,7 @@ textarea::-webkit-input-placeholder {
   position: absolute;
   top: 150px;
   line-height: 1.2;
-  font-size: 24px;
+  font-size: 22px;
   color: #fff;
 }
 
@@ -305,6 +309,7 @@ textarea::-webkit-input-placeholder {
   height: 15px;
   top: 15px;
   right: 15px;
+  background-image: url('http://img.pillele.cn/delete-1.png');
   background-repeat: no-repeat;
   background-size: contain;
 }

@@ -157,24 +157,27 @@ $('#J-info-query').on('click', function() {
   })
     .then(res => {
       if (res.code === '0000') {
+        username = res.usname
         const joinTime = res['join_time']
         const random = Math.floor(Math.random() * 3)
-        username = res.usname
+        let infoTitle = ''
         if (queryType === 1) {
           url = manifest.filter(item => item.id === '#J-slide-8' && item.target === 'staff')[random].src
           title = `${username}在${joinTime}\r加入了惠金所`
+          infoTitle = `${username}在${joinTime}<br/>加入了惠金所`
           // description = staffDefaultText[random]
           $('#J-shape-employee').show()
           $('#J-shape-user').hide()
         } else {
           url = manifest.filter(item => item.id === '#J-slide-8' && item.target === 'user')[random].src
           title = `今天是${username}加入惠金所\r第${joinTime}天`
+          infoTitle = `今天是${username}加入惠金所<br/>第${joinTime}天`
           // description = userDefaultText[random]
           $('#J-shape-employee').hide()
           $('#J-shape-user').show()
         }
         $('#J-slide-8').attr('src', `${url}`)
-        $('#J-role-info').html(title)
+        $('#J-role-info').html(infoTitle)
         swiper.allowSlideNext = true
         swiper.slideNext(300, false)
         setTimeout(() => {
