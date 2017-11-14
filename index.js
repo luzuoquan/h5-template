@@ -15,6 +15,8 @@ const description = '彼此成就，与有荣焉'  // 待合成的祝福语
 
 let title // 待合成的人
 
+let username
+
   // shape-employee shape-user activity-user activity-staff delete delete-1
 
 const queue = new createjs.LoadQueue(true)
@@ -155,9 +157,9 @@ $('#J-info-query').on('click', function() {
   })
     .then(res => {
       if (res.code === '0000') {
-        const username = res.usname
         const joinTime = res['join_time']
         const random = Math.floor(Math.random() * 3)
+        username = res.usname
         if (queryType === 1) {
           url = manifest.filter(item => item.id === '#J-slide-8' && item.target === 'staff')[random].src
           title = `${username}在${joinTime}\r加入了惠金所`
@@ -197,6 +199,13 @@ $('#J-info-query').on('click', function() {
 
 $('#J-build').on('click', function () {
   let wxTitle
+  const customText = $('#J-custom-text').val()
+
+  if (customText && customText.length > 20) {
+    $('#J-info-text').html('想说的话不能超过20字喔')
+    $('#J-info-modal').show()
+    return
+  }
   const draw = new Draw({
     title: title,
     description: $('#J-custom-text').val() || description,
@@ -206,16 +215,15 @@ $('#J-build').on('click', function () {
     type: queryType
   })
   if (queryType === 1) {
-    wxTitle = '杨冀川奋斗在惠金所'
+    wxTitle = `${username}奋斗在惠金所`
   } else {
-    wxTitle = '张猛在这升值财富'
+    wxTitle = `${username}在这升值财富`
   }
   wechat.wx.onMenuShareTimeline({
     title: wxTitle,
     link: 'http://h5.pillele.cn/thanksgiving',
     imgUrl: 'http://img.pillele.cn/1.png',
     success() {
-      alert('已分享')
     }
   })
   wechat.wx.onMenuShareAppMessage({
@@ -224,7 +232,6 @@ $('#J-build').on('click', function () {
     link: 'http://h5.pillele.cn/thanksgiving',
     imgUrl: 'http://img.pillele.cn/1.png',
     success() {
-      alert('已分享')
     }
   })
   setTimeout(() => {

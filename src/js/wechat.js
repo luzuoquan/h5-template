@@ -21,7 +21,6 @@ export default class Wechat {
               link: 'http://h5.pillele.cn/thanksgiving',
               imgUrl: 'http://img.pillele.cn/1.png',
               success() {
-                alert('已分享')
               }
             })
             this.wx.onMenuShareAppMessage({
@@ -30,7 +29,6 @@ export default class Wechat {
               link: 'http://h5.pillele.cn/thanksgiving',
               imgUrl: 'http://img.pillele.cn/1.png',
               success() {
-                alert('已分享')
               }
             })
           })
@@ -43,7 +41,6 @@ export default class Wechat {
           link: 'http://h5.pillele.cn/thanksgiving',
           imgUrl: 'http://img.pillele.cn/1.png',
           success() {
-            alert('已分享')
           }
         })
         this.wx.onMenuShareAppMessage({
@@ -52,7 +49,6 @@ export default class Wechat {
           link: 'http://h5.pillele.cn/thanksgiving',
           imgUrl: 'http://img.pillele.cn/1.png',
           success() {
-            alert('已分享')
           }
         })
       })
