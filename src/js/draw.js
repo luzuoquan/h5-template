@@ -32,7 +32,7 @@ export default class Draw {
       this.canvasContext.fillText(this.title.substr(splitIndex), this.width / 2, 184)
 
       // description
-      this.canvasContext.font = 'italic bold 22px PingFangSC-Light,Helvetica'
+      this.canvasContext.font = 'normal bold 22px PingFangSC-Light,Helvetica'
       if (this.description.length > 10) {
         this.canvasContext.fillText(this.description.substr(0, 10), this.width / 2, 250)
         this.canvasContext.fillText(this.description.substr(10), this.width / 2, 284)

@@ -78,6 +78,13 @@ body {
   transform: translate(-50%,-65%);
   background-size: contain;
   background-repeat: no-repeat;
+  opacity: 0;
+  -webkit-transition: all 3.5s;
+  transition: all 3.5s;
+}
+
+.swiper-slide-active .slide-img-front {
+  opacity: 1;
 }
 
 .u-logo {

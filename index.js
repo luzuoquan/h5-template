@@ -11,7 +11,7 @@ let wechat // 分享实例
 
 let url // 待合成的图片src
 
-let description  // 待合成的祝福语
+const description = '彼此成就，与有荣焉'  // 待合成的祝福语
 
 let title // 待合成的人
 
@@ -161,13 +161,13 @@ $('#J-info-query').on('click', function() {
         if (queryType === 1) {
           url = manifest.filter(item => item.id === '#J-slide-8' && item.target === 'staff')[random].src
           title = `${username}在${joinTime}\r加入了惠金所`
-          description = staffDefaultText[random]
+          // description = staffDefaultText[random]
           $('#J-shape-employee').show()
           $('#J-shape-user').hide()
         } else {
           url = manifest.filter(item => item.id === '#J-slide-8' && item.target === 'user')[random].src
           title = `今天是${username}加入惠金所\r第${joinTime}天`
-          description = userDefaultText[random]
+          // description = userDefaultText[random]
           $('#J-shape-employee').hide()
           $('#J-shape-user').show()
         }
