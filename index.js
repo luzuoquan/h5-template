@@ -67,6 +67,17 @@ const userDefaultText = [
 //   width: $('body').width()
 // })
 
+const swiper = new Swiper('.swiper-container', {
+  direction: 'vertical',
+  simulateTouch: false,
+  followFinger: false,
+  on: {
+    slideChangeTransitionStart: function () {
+      this.allowSlideNext = this.activeIndex !== 6
+    }
+  }
+})
+
 
 queue.loadManifest(manifest)
 
@@ -87,22 +98,15 @@ const handleComplete = () => {
     $(item.id).css('background-image', `url(${item.src}`)
   })
   wechat = new Wechat()
+
+  setTimeout(() => {
+    swiper.slideNext(300, false)
+  }, 500)
 }
 
 queue.on("progress", handleProgress, this)
 
 queue.on("complete", handleComplete, this)
-
-const swiper = new Swiper('.swiper-container', {
-  direction: 'vertical',
-  simulateTouch: false,
-  followFinger: false,
-  on: {
-    slideChangeTransitionStart: function () {
-      this.allowSlideNext = this.activeIndex !== 6
-    }
-  }
-})
 
 $('.u-role').on('click', function () {
   if ($(this).attr('data-type') !== 'newer') {
