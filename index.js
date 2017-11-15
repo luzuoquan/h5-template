@@ -73,7 +73,9 @@ const swiper = new Swiper('.swiper-container', {
   followFinger: false,
   on: {
     slideChangeTransitionStart: function () {
+      
       this.allowSlideNext = this.activeIndex !== 6
+      this.allowSlidePrev = this.activeIndex !== 1
     }
   }
 })
@@ -102,6 +104,7 @@ const handleComplete = () => {
   $('body').height(document.body.clientHeight)
 
   setTimeout(() => {
+    swiper.allowSlidePrev = false
     swiper.slideNext(300, false)
   }, 500)
 }
@@ -273,5 +276,15 @@ $('#J-delete-modal').on('click', function () {
 $('#J-info-delete').on('click', function () {
   $('#J-info-text').html()
   $('#J-info-modal').hide()
+})
+
+$('#J-custom-text').on('keydown', function (event) {
+  const value = $(this).val()
+  if(value.length > 20) {
+    $('#J-info-text').html('想说的话不可以超过20个字喔')
+    $('#J-info-modal').show()
+    $(this).val(value.substr(0,20))
+    return false
+  }
 })
 

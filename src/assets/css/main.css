@@ -188,6 +188,7 @@ body {
   color: #fff;
   resize: none;
   border-radius: 10px;
+  text-align: center;
 }
 
 input::-webkit-input-placeholder {
@@ -325,7 +326,48 @@ textarea::-webkit-input-placeholder {
   margin-bottom: 0;
 }
 
+.u-input:focus, .u-input-multiple:focus {
+  outline: none;
+}
+
 .u-input-multiple .u-input::-webkit-input-placeholder {
   font-size: 14px;
   color: #fff;
+}
+
+.u-arrow {
+  width: 40px;
+  height: 30px;
+  background-image: url('http://img.pillele.cn/arrow.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  -webkit-animation: arrowdown 2s infinite ease;
+  animation: arrowdown 2s infinite ease;
+}
+
+@keyframes arrowdown{
+  0% {
+    bottom: 50px;
+  }
+  50% {
+    bottom: 40px;
+  }
+  100% {
+    bottom: 50px;
+  }
+}
+@-webkit-keyframes arrowdown{
+  0% {
+    bottom: 50px;
+  }
+  50% {
+    bottom: 40px;
+  }
+  100% {
+    bottom: 50px;
+  }
 }
