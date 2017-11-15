@@ -99,6 +99,8 @@ const handleComplete = () => {
   })
   wechat = new Wechat()
 
+  $('body').height(document.body.clientHeight)
+
   setTimeout(() => {
     swiper.slideNext(300, false)
   }, 500)
