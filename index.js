@@ -32,7 +32,7 @@ const manifest = [
   {id: '#J-slide-7', isSrc: true,  target: 'inner', src: 'http://img.pillele.cn/step-2.png'},
   {id: '#J-slide-8', isSrc: true,  target: 'staff', src: 'http://img.pillele.cn/staff-1.png'},
   {id: '#J-slide-8', isSrc: true,  target: 'staff', src: 'http://img.pillele.cn/staff-2.png'},
-  {id: '#J-slide-8', isSrc: true,  target: 'staff', src: 'http://img.pillele.cn/staff-3.png'},
+  {id: '#J-slide-8', isSrc: true,  target: 'staff', src: 'http://img.pillele.cn/staff-4.png'},
   {id: '#J-slide-8', isSrc: true,  target: 'user', src: 'http://img.pillele.cn/user-1.png'},
   {id: '#J-slide-8', isSrc: true,  target: 'user', src: 'http://img.pillele.cn/user-2.png'},
   {id: '#J-slide-8', isSrc: true,  target: 'user', src: 'http://img.pillele.cn/user-3.png'},
