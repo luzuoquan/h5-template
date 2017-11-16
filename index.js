@@ -278,13 +278,13 @@ $('#J-info-delete').on('click', function () {
   $('#J-info-modal').hide()
 })
 
-$('#J-custom-text').on('keydown', function (event) {
+$('#J-custom-text').on('input', function (event) {
   const value = $(this).val()
   if(value.length > 20) {
     $('#J-info-text').html('想说的话不可以超过20个字喔')
     $('#J-info-modal').show()
     $(this).val(value.substr(0,20))
-    return false
+    event.preventDefault()
   }
 })
 
