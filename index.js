@@ -94,12 +94,12 @@ const handleComplete = () => {
         'background-image': `url("${item.src}")`
       })
     } else {
-      $(item.id).attr('src', `${item.src}`)
+      $(item.id).attr('src', `"${item.src}"`)
     }
     
   })
   frontManifest.forEach(item => {
-    $(item.id).css('background-image', `url(${item.src}`)
+    $(item.id).css('background-image', `url("${item.src}"`)
   })
   wechat = new Wechat()
 
@@ -118,7 +118,7 @@ queue.on("complete", handleComplete, this)
 $('.u-role').on('click', function () {
   if ($(this).attr('data-type') !== 'newer') {
     const url = manifest.filter(item => item.id === '#J-slide-7' && item.target === 'inner')[0].src
-    $('#J-slide-7').css('background-image', `url(${url}`)
+    $('#J-slide-7').css('background-image', `url("${url}")`)
     $('#J-register-btn').hide();
     $('#J-query-form').show();
     $('#J-info-query').show();
@@ -128,7 +128,7 @@ $('.u-role').on('click', function () {
     $('#J-register-btn').show();
     $('#J-query-form').hide();
     $('#J-info-query').hide();
-    $('#J-slide-7').css('background-image', `url(${url}`)
+    $('#J-slide-7').css('background-image', `url("${url}")`)
   }
   swiper.allowSlideNext = true
   swiper.slideNext(300, false)
@@ -187,7 +187,7 @@ $('#J-info-query').on('click', function() {
           $('#J-shape-employee').hide()
           $('#J-shape-user').show()
         }
-        $('#J-slide-8').attr('src', `${url}`)
+        $('#J-slide-8').attr('src', `"${url}"`)
         $('#J-role-info').html(infoTitle)
         swiper.allowSlideNext = true
         swiper.slideNext(300, false)
