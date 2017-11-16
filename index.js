@@ -99,7 +99,7 @@ const handleComplete = () => {
     
   })
   frontManifest.forEach(item => {
-    $(item.id).css('background-image', `url("${item.src}"`)
+    $(item.id).css('background-image', `url("${item.src}")`)
   })
   wechat = new Wechat()
 
