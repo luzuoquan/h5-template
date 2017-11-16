@@ -94,7 +94,7 @@ const handleComplete = () => {
         'background-image': `url("${item.src}")`
       })
     } else {
-      $(item.id).attr('src', `"${item.src}"`)
+      $(item.id).attr('src', `${item.src}`)
     }
     
   })
@@ -187,7 +187,7 @@ $('#J-info-query').on('click', function() {
           $('#J-shape-employee').hide()
           $('#J-shape-user').show()
         }
-        $('#J-slide-8').attr('src', `"${url}"`)
+        $('#J-slide-8').attr('src', `${url}`)
         $('#J-role-info').html(infoTitle)
         swiper.allowSlideNext = true
         swiper.slideNext(300, false)
