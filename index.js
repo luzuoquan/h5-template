@@ -22,7 +22,7 @@ let username
 const queue = new createjs.LoadQueue(true)
 
 const manifest = [
-  {id: '#J-slide-1', isSrc: true,  target: 'bg', src: 'http://img.pillele.cn/cover.png'},
+  {id: '#J-slide-1', isSrc: true,  target: 'bg', src: 'http://img.pillele.cn/cover.jpg'},
   {id: '#J-slide-2', isSrc: true,  target: 'bg', src: 'http://img.pillele.cn/bg.png'},
   {id: '#J-slide-3', isSrc: true,  target: 'bg', src: 'http://img.pillele.cn/bg.png'},
   {id: '#J-slide-4', isSrc: true,  target: 'bg', src: 'http://img.pillele.cn/bg.png'},
@@ -90,7 +90,9 @@ const handleProgress = event => {
 const handleComplete = () => {
   manifest.forEach(item => {
     if (item.isSrc) {
-      $(item.id).css('background-image', `url(${item.src}`)
+      $(item.id).css({
+        'background-image': `url("${item.src}")`
+      })
     } else {
       $(item.id).attr('src', `${item.src}`)
     }

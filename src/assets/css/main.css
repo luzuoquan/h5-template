@@ -349,6 +349,14 @@ textarea::-webkit-input-placeholder {
   animation: arrowdown 2s infinite ease;
 }
 
+.u-form {
+  opacity: 0;
+}
+
+.swiper-slide-active .u-form {
+  opacity: 1;
+}
+
 @keyframes arrowdown{
   0% {
     bottom: 50px;
