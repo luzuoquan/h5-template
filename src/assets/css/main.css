@@ -288,6 +288,7 @@ textarea::-webkit-input-placeholder {
 
 .u-role-info {
   position: absolute;
+  display: inline-block;
   top: 117px;
   line-height: 1.2;
   font-size: 22px;
