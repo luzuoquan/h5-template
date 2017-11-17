@@ -292,6 +292,7 @@ textarea::-webkit-input-placeholder {
   top: 117px;
   left: 50%;
   min-width: 220px;
+  width: 100%;
   -webkit-transform: translate(-50%, 0);
   transform: translate(-50%, 0);
   line-height: 1.2;
