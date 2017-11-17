@@ -17,6 +17,8 @@ let title // 待合成的人
 
 let username
 
+let inputActive = true // 限制中文输入法对字符串长度计算的影响
+
   // shape-employee shape-user activity-user activity-staff delete delete-1
 
 const queue = new createjs.LoadQueue(true)
@@ -277,11 +279,15 @@ $('#J-info-delete').on('click', function () {
 
 $('#J-custom-text').on('input', function (event) {
   const value = $(this).val()
-  if(value && parseInt(value.length) > 20) {
+  if(inputActive && value && parseInt(value.length) > 20) {
     $('#J-info-text').html('想说的话不可以超过20个字喔')
     $('#J-info-modal').show()
     $(this).val(value.substr(0,20))
     event.preventDefault()
   }
+}).on('compositionstart', function () {
+  inputActive = false
+}).on('compositionend', function () {
+  inputActive = true
 })
 
