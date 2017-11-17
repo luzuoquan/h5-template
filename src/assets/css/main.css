@@ -290,6 +290,10 @@ textarea::-webkit-input-placeholder {
   position: absolute;
   display: inline-block;
   top: 117px;
+  left: 50%;
+  min-width: 220px;
+  -webkit-transform: translate(-50%, 0);
+  transform: translate(-50%, 0);
   line-height: 1.2;
   font-size: 22px;
   color: #fff;
