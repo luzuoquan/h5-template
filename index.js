@@ -215,14 +215,9 @@ $('#J-build').on('click', function () {
   let wxTitle
   const customText = $('#J-custom-text').val()
 
-  if (customText && customText.length > 20) {
-    $('#J-info-text').html('想说的话不能超过20字喔')
-    $('#J-info-modal').show()
-    return
-  }
   const draw = new Draw({
     title: title,
-    description: $('#J-custom-text').val() || description,
+    description: customText || description,
     src: url,
     height: $('body').height(),
     width: $('body').width(),
@@ -282,7 +277,7 @@ $('#J-info-delete').on('click', function () {
 
 $('#J-custom-text').on('input', function (event) {
   const value = $(this).val()
-  if(value.length > 20) {
+  if(value && parseInt(value.length) > 20) {
     $('#J-info-text').html('想说的话不可以超过20个字喔')
     $('#J-info-modal').show()
     $(this).val(value.substr(0,20))
