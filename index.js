@@ -71,8 +71,8 @@ const userDefaultText = [
 
 const swiper = new Swiper('.swiper-container', {
   direction: 'vertical',
-  // simulateTouch: false,
-  // followFinger: false,
+  simulateTouch: false,
+  followFinger: false,
   on: {
     slideChangeTransitionStart: function () {
       
