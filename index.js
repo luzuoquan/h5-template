@@ -19,6 +19,10 @@ let username
 
 let inputActive = true // 限制中文输入法对字符串长度计算的影响
 
+let customCloseMp3 = false // 没有主动关闭播放器
+
+const audio = document.querySelector('#J-audio')
+
   // shape-employee shape-user activity-user activity-staff delete delete-1
 
 const queue = new createjs.LoadQueue(true)
@@ -207,7 +211,7 @@ $('#J-info-query').on('click', function() {
         $('#J-info-text').html('您填写的信息可能有误<br/>请核实后重新提交')
         $('#J-info-modal').show()
       } else {
-        $('#J-info-text').html('OPPS，您可能遇到了以下情况，<br/>无法继续访问：<br/>1、点错了？请返回上一页，<br/>选择正确身份呢。<br/>2、11月8号后入职的新同事信息这次暂未收录哦~下个节日再见！')
+        $('#J-info-text').html('您可能遇到了以下情况，<br/>无法继续访问：<br/>1、点错了？请返回上一页，<br/>选择正确身份呢。<br/>2、输入的不是入职登记的手机号？<br/>请回忆下重新输入哦<br/>3、11月8号后入职的新同事信息这次暂未收录哦~下个节日再见！')
         $('#J-info-modal').show()
       }
     })
@@ -289,5 +293,26 @@ $('#J-custom-text').on('input', function (event) {
   inputActive = false
 }).on('compositionend', function () {
   inputActive = true
+})
+
+$('body').on('touchstart', function () {
+  if (!customCloseMp3 && audio.played.length === 0) {
+    audio.play()
+  }
+})
+
+$('#J-music').on('touchstart', function(event) {
+  if ($(this).hasClass('music-active')) {
+    $(this).removeClass('music-active')
+    audio.pause()
+  } else {
+    $(this).addClass('music-active')
+    audio.play()
+  }
+  event.stopPropagation()
+})
+
+$('#J-info-choice').on('click', function () {
+  swiper.slideTo(6, 300, false)
 })
 

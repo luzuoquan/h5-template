@@ -363,6 +363,38 @@ textarea::-webkit-input-placeholder {
   opacity: 1;
 }
 
+.m-music {
+  position: absolute;
+  width: 27px;
+  height: 31px;
+  top: 30px;
+  left: 23px;
+}
+
+.u-music-icon {
+  display: block;
+  width: 27px;
+  height: 31px;
+  background-image: url('http://img.pillele.cn/bgm.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.music-active .u-music-icon {
+  -webkit-animation: rotate 1s infinite linear;
+  animation: rotate 1s infinite linear;
+}
+
+.u-chioce {
+  bottom: 120px;
+}
+
+audio {
+  display: inline-block;
+  width: 0;
+  height: 0;
+}
+
 @keyframes arrowdown{
   0% {
     bottom: 50px;
@@ -383,5 +415,26 @@ textarea::-webkit-input-placeholder {
   }
   100% {
     bottom: 50px;
+  }
+}
+
+@keyframes rotate {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes rotate {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
