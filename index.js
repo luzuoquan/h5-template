@@ -293,6 +293,7 @@ $('#J-custom-text').on('input', function (event) {
   inputActive = false
 }).on('compositionend', function () {
   inputActive = true
+  $(this).trigger('input')
 })
 
 $('body').on('touchstart', function () {
