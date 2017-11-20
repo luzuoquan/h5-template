@@ -17,14 +17,14 @@ export default class Wechat {
         .then(() => {
           this.wx.ready(() => {
             this.wx.onMenuShareTimeline({
-              title: '惠金所，感谢有你',
+              title: '暖心感恩节，惠金所送福利',
               link: 'http://h5.pillele.cn/thanksgiving',
               imgUrl: 'http://img.pillele.cn/1.png',
               success() {
               }
             })
             this.wx.onMenuShareAppMessage({
-              title: '惠金所，感谢有你',
+              title: '暖心感恩节，惠金所送福利',
               desc: '彼此成就，与有荣焉',
               link: 'http://h5.pillele.cn/thanksgiving',
               imgUrl: 'http://img.pillele.cn/1.png',
@@ -37,14 +37,14 @@ export default class Wechat {
       this.wx.config(window.wxConfig)
       this.wx.ready(() => {
         this.wx.onMenuShareTimeline({
-          title: '惠金所，感谢有你',
+          title: '暖心感恩节，惠金所送福利',
           link: 'http://h5.pillele.cn/thanksgiving',
           imgUrl: 'http://img.pillele.cn/1.png',
           success() {
           }
         })
         this.wx.onMenuShareAppMessage({
-          title: '惠金所，感谢有你',
+          title: '暖心感恩节，惠金所送福利',
           desc: '彼此成就，与有荣焉',
           link: 'http://h5.pillele.cn/thanksgiving',
           imgUrl: 'http://img.pillele.cn/1.png',

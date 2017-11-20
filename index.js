@@ -36,12 +36,12 @@ const manifest = [
   {id: '#J-slide-6', isSrc: true,  target: 'bg', src: 'http://img.pillele.cn/step-1.png'},
   {id: '#J-slide-7', isSrc: true,  target: 'newer',  src: 'http://img.pillele.cn/step-2-1.png'},
   {id: '#J-slide-7', isSrc: true,  target: 'inner', src: 'http://img.pillele.cn/step-2.png'},
-  {id: '#J-slide-8', isSrc: true,  target: 'staff', src: 'http://img.pillele.cn/staff-1.png'},
-  {id: '#J-slide-8', isSrc: true,  target: 'staff', src: 'http://img.pillele.cn/staff-2.png'},
-  {id: '#J-slide-8', isSrc: true,  target: 'staff', src: 'http://img.pillele.cn/staff-4.png'},
-  {id: '#J-slide-8', isSrc: true,  target: 'user', src: 'http://img.pillele.cn/user-1.png'},
-  {id: '#J-slide-8', isSrc: true,  target: 'user', src: 'http://img.pillele.cn/user-2.png'},
-  {id: '#J-slide-8', isSrc: true,  target: 'user', src: 'http://img.pillele.cn/user-3.png'},
+  {id: '#J-slide-8', isSrc: true,  target: 'staff', src: 'http://img.pillele.cn/staff-1.jpg'},
+  {id: '#J-slide-8', isSrc: true,  target: 'staff', src: 'http://img.pillele.cn/staff-2.jpg'},
+  {id: '#J-slide-8', isSrc: true,  target: 'staff', src: 'http://img.pillele.cn/staff-3.jpg'},
+  {id: '#J-slide-8', isSrc: true,  target: 'user', src: 'http://img.pillele.cn/user-1.jpg'},
+  {id: '#J-slide-8', isSrc: true,  target: 'user', src: 'http://img.pillele.cn/user-2.jpg'},
+  {id: '#J-slide-8', isSrc: true,  target: 'user', src: 'http://img.pillele.cn/user-3.jpg'},
   {id: '#J-staff-tip', isSrc: false,  target: 'bg', src: 'http://img.pillele.cn/activity-staff.jpg'},
   {id: '#J-user-tip', isSrc: false,  target: 'bg', src: 'http://img.pillele.cn/activity-user.jpg'}
 ]
@@ -187,8 +187,8 @@ $('#J-info-query').on('click', function() {
           $('#J-shape-user').hide()
         } else {
           url = manifest.filter(item => item.id === '#J-slide-8' && item.target === 'user')[random].src
-          title = `今天是${username}加入惠金所\r第${joinTime}天`
-          infoTitle = `今天是${username}加入惠金所<br/>第${joinTime}天`
+          title = `今天是${username}选择惠金所\r第${joinTime}天`
+          infoTitle = `今天是${username}选择惠金所<br/>第${joinTime}天`
           // description = userDefaultText[random]
           $('#J-shape-employee').hide()
           $('#J-shape-user').show()
