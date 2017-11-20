@@ -237,7 +237,7 @@ $('#J-build').on('click', function () {
   wechat.wx.onMenuShareTimeline({
     title: wxTitle,
     link: 'http://h5.pillele.cn/thanksgiving',
-    imgUrl: 'http://img.pillele.cn/1.png',
+    imgUrl: 'http://img.pillele.cn/share.jpeg',
     success() {
     }
   })
@@ -245,7 +245,7 @@ $('#J-build').on('click', function () {
     title: wxTitle,
     desc: '彼此成就，与有荣焉',
     link: 'http://h5.pillele.cn/thanksgiving',
-    imgUrl: 'http://img.pillele.cn/1.png',
+    imgUrl: 'http://img.pillele.cn/share.jpeg',
     success() {
     }
   })
