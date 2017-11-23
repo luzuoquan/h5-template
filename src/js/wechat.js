@@ -1,3 +1,4 @@
+// @flow
 // wechat
 import '../assets/lib/jweixin-1.2.0.js'
 export default class Wechat {

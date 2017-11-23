@@ -1,3 +1,5 @@
+// @flow
+
 import Swiper from 'swiper'
 import Wechat from './src/js/wechat.js'
 import Draw from './src/js/draw.js'
@@ -316,4 +318,8 @@ $('#J-music').on('touchstart', function(event) {
 $('#J-info-choice').on('click', function () {
   swiper.slideTo(6, 300, false)
 })
+
+// function testFlow(x: number): string {
+//   return 2;
+// }
 
