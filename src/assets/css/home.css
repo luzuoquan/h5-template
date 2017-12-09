@@ -13,20 +13,108 @@ html,body {
 .section-item {
   background: url('../images/bg_part1.png') no-repeat;
   background-size: cover;
-  height: 7129px;
+  height: 14258px;
 
   .u-logo {
     position: relative;
+    margin-top: 132px;
+    display: flex;
+    justify-content: space-around;
   }
 
   .u-logo-hjs {
-    position: absolute;
-    top: 66px;
-    left: 53px;
     display: block;
-    width: 534px;
-    height: 78px;
+    width: 538px;
+    height: 82px;
     background: url('../images/logo_huijinsuo.png') no-repeat;
+    background-size: contain;
+  }
+
+  .u-logo-cang {
+    margin-top: -24px;
+    display: block;
+    width: 112px;
+    height: 130px;
+    background: url('../images/logo_heise.png') no-repeat;
+    background-size: contain;
+  }
+
+  .u-logo-hongqiao {
+    display: block;
+    width: 480px;
+    height: 82px;
+    background: url('../images/logo_hongqiao.png') no-repeat;
+    background-size: contain;
+  }
+
+  .u-text {
+    margin-top: 116px;
+  }
+
+  .u-text-1 {
+    display: block;
+    width: 818px;
+    height: 802px;
+    background: url('../images/text-1.png') no-repeat;
+    background-size: contain;
+    margin: 0 auto;
+  }
+
+  .u-text-2 {
+    display: block;
+    width: 1076px;
+    height: 264px;
+    background: url('../images/text-2.png') no-repeat;
+    background-size: contain;
+    margin: 128px auto 0;
+  }
+
+  .u-text-3 {
+    display: block;
+    width: 1082px;
+    height: 902px;
+    background: url('../images/text-3.png') no-repeat;
+    background-size: contain;
+    margin: 160px auto 0;
+  }
+
+  .u-text-bg-1 {
+    display: block;
+    width: 100%;
+    height: 1000px;
+    background: url('../images/text-bg-1.png') no-repeat;
+    background-size: contain;
+    margin: -102px auto 0;
+  }
+
+  .u-scene {
+    position: relative;
+  }
+
+  .u-sir-1 {
+    display: block;
+    width: 972px;
+    height: 1238px;
+    background: url('../images/sir1.png') no-repeat;
+    background-size: contain;
+    position: absolute;
+    right: 82px;
+    top: -50px;
+  }
+
+  .u-sir-text {
+    display: block;
+    width: 488px;
+    height: 192px;
+    background: url('../images/sir1_txt.png') no-repeat;
+    background-size: contain;
+  }
+
+  .u-sir-word {
+    display: block;
+    width: 536px;
+    height: 514px;
+    background: url('../images/sir1_shuo.png') no-repeat;
     background-size: contain;
   }
 }
