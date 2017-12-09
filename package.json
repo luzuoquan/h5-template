@@ -24,6 +24,7 @@
     "copy-webpack-plugin": "^4.2.0",
     "cross-env": "^5.1.0",
     "css-loader": "^0.28.7",
+    "expose-loader": "^0.7.4",
     "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^1.1.5",
     "flow-bin": "^0.61.0",
@@ -46,7 +47,8 @@
   },
   "dependencies": {
     "normalize.css": "^7.0.0",
-    "parallax-js": "^3.1.0"
+    "parallax-js": "^3.1.0",
+    "swiper": "^4.0.7"
   },
   "repository": {
     "type": "git",

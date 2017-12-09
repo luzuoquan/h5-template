@@ -1,8 +1,13 @@
 // @flow
+import Swiper from 'swiper'
 // import 'normalize.css'
-import './src/assets/css/home.css'
-import Parallax from 'parallax-js'
+// import './src/assets/css/home.css'
+// import $ from 'jquery'
 
-const scene1 = document.querySelector('#J-scene')
+// import Parallax from 'parallax-js'
 
-const parallaxInstance = new Parallax(scene1)
+// const scene1 = document.querySelector('#J-scene')
+
+// const parallaxInstance = new Parallax(scene1)
+
+console.info($)
