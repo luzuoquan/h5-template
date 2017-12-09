@@ -20,15 +20,18 @@ module.exports = {
       test: /\.(js|jsx)$/,
       use: 'babel-loader'
     }, {
-      test: /\.css/,
-      use: ['style-loader','css-loader']
+      test: /\.css$/,
+      // exclude: /node_modules/,
+      use: ['style-loader','css-loader?importLoaders=1', 'postcss-loader']
     }, {
       test: require.resolve("../src/assets/lib/jquery-3.2.1.min.js"),
       use: "imports-loader?$=jquery"
-    }, {
-      test: require.resolve("../src/assets/lib/createjs.js"),
-      use: "imports-loader?this=>window"
-    }, {
+    }, 
+    // {
+    //   test: require.resolve("../src/assets/lib/createjs.js"),
+    //   use: "imports-loader?this=>window"
+    // }, 
+    {
       test: require.resolve("../src/assets/lib/jweixin-1.2.0.js"),
       use: "imports-loader?this=>window,define=>false"
     }, {
