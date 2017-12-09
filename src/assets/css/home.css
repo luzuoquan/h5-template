@@ -14,4 +14,19 @@ html,body {
   background: url('../images/bg_part1.png') no-repeat;
   background-size: cover;
   height: 7129px;
+
+  .u-logo {
+    position: relative;
+  }
+
+  .u-logo-hjs {
+    position: absolute;
+    top: 66px;
+    left: 53px;
+    display: block;
+    width: 534px;
+    height: 78px;
+    background: url('../images/logo_huijinsuo.png') no-repeat;
+    background-size: contain;
+  }
 }
