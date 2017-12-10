@@ -16,49 +16,53 @@ module.exports = {
 		extensions: ['.js', '.jsx']
   },
   module: {
-    rules: [{
-      test: /\.(js|jsx)$/,
-      exclude: /src\/assets\/lib\/*/,
-      use: 'babel-loader'
-    },{
-      test: /\.css$/,
-      // exclude: /node_modules/,
-      use: ['style-loader','css-loader?importLoaders=1', 'postcss-loader']
-    },
-    {
-      test: require.resolve("../src/assets/lib/jquery-3.2.1.min.js"),
-      use: [{
-          loader: 'imports-loader?$=jquery'
-        }
-        // ,{
-        //   loader: 'expose-loader',
-        //   options: '$'
-        // }
-      ]
-    }, 
-    // {
-    //   test: require.resolve("../src/assets/lib/createjs.js"),
-    //   use: "imports-loader?this=>window"
-    // }, 
-    {
-      test: require.resolve("../src/assets/lib/jweixin-1.2.0.js"),
-      use: "imports-loader?this=>window,define=>false"
-    }, {
-      test: /\.(png|jpg|gif)$/,
-      use: [{
-        loader: 'file-loader',
-        options: {
-          name: '[name].[ext]',
-          publicPath: '/',
-          outputPath: 'static/images/'
-        }
-      }]
-    }]
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: 'babel-loader'
+      },
+      {
+        test: /\.css$/,
+        // exclude: /node_modules/,
+        use: ['style-loader','css-loader?importLoaders=1', 'postcss-loader']
+      },
+      // {
+      //   test: require.resolve("../src/assets/lib/jquery-3.2.1.min.js"),
+      //   use: [{
+      //       loader: 'imports-loader?$=jquery'
+      //     }
+      //     ,{
+      //       loader: 'expose-loader',
+      //       options: '$'
+      //     }
+      //   ]
+      // }, 
+      {
+        test: require.resolve("zepto"),
+        use: "imports-loader?this=>window"
+      }, 
+      {
+        test: require.resolve("../src/assets/lib/jweixin-1.2.0.js"),
+        use: "imports-loader?this=>window,define=>false"
+      }, 
+      {
+        test: /\.(png|jpg|gif)$/,
+        use: [{
+          loader: 'file-loader',
+          options: {
+            name: '[name].[ext]',
+            publicPath: '/',
+            outputPath: 'static/images/'
+          }
+        }]
+      }
+    ]
   },
   plugins:[
-    // new webpack.ProvidePlugin({
-    //   $: 'jquery',
-    //   jQuery: 'jquery'
-    // })
+    new webpack.ProvidePlugin({
+      $: 'zepto',
+      Zepto: 'zepto'
+    })
   ]
 }

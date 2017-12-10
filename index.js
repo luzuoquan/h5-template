@@ -1,7 +1,6 @@
 // @flow
+import './src/assets/css/home.css'
 import Swiper from 'swiper'
-// import 'normalize.css'
-// import './src/assets/css/home.css'
 // import $ from 'jquery'
 
 // import Parallax from 'parallax-js'
@@ -10,4 +9,13 @@ import Swiper from 'swiper'
 
 // const parallaxInstance = new Parallax(scene1)
 
-console.info($)
+console.info($('body'))
+
+$(document).on('DOMContentLoaded', function(event) {
+  
+  console.info($('#J-parallax-1').offset())
+})
+
+$(window).on('scroll', function(event) {
+  console.info(window.scrollY)
+})
