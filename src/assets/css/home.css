@@ -87,8 +87,9 @@ html,body {
     margin: -102px auto 0;
   }
 
-  .u-scene {
+  .u-parallax {
     position: relative;
+    height: 1238px;
   }
 
   .u-sir-1 {
@@ -108,6 +109,9 @@ html,body {
     height: 192px;
     background: url('../images/sir1_txt.png') no-repeat;
     background-size: contain;
+    position: absolute;
+    bottom: 514px;
+    left: 0;
   }
 
   .u-sir-word {
@@ -116,5 +120,12 @@ html,body {
     height: 514px;
     background: url('../images/sir1_shuo.png') no-repeat;
     background-size: contain;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+
+  .u-parallax-item {
+    transition: all 5s;
   }
 }
