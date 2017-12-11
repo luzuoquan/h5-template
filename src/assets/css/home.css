@@ -126,6 +126,6 @@ html,body {
   }
 
   .u-parallax-item {
-    transition: all 2s;
+    transition: all .5s;
   }
 }
