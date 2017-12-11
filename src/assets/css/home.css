@@ -1,8 +1,8 @@
 @import 'normalize.css';
 
 html,body {
-  height: 100%;
   width: 100%;
+  height: 100%;
 }
 
 #app-container {
@@ -126,6 +126,6 @@ html,body {
   }
 
   .u-parallax-item {
-    transition: all 5s;
+    transition: all 2s;
   }
 }
