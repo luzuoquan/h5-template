@@ -2,12 +2,15 @@
 
 html,body {
   width: 100%;
-  height: 100%;
+}
+body {
+  position: relative;
 }
 
 #app-container {
   display: flex;
   flex-direction: column;
+  transition: all .5s;
 }
 
 .section-item {
@@ -87,7 +90,7 @@ html,body {
     margin: -102px auto 0;
   }
 
-  .u-parallax {
+  .u-parallax-1 {
     position: relative;
     height: 1238px;
   }
@@ -103,7 +106,7 @@ html,body {
     top: -50px;
   }
 
-  .u-sir-text {
+  .u-sir-text-1 {
     display: block;
     width: 488px;
     height: 192px;
@@ -114,7 +117,7 @@ html,body {
     left: 0;
   }
 
-  .u-sir-word {
+  .u-sir-word-1 {
     display: block;
     width: 536px;
     height: 514px;
@@ -126,6 +129,73 @@ html,body {
   }
 
   .u-parallax-item {
-    transition: all .5s;
+    transition: all .6s;
   }
+
+  .u-anchor-1 {
+    position: relative;
+    height: 124px;
+    width: 100%;
+
+    .u-anchor-text-1 {
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 82px;
+      width: 494px;
+      height: 124px;
+      background: url('../images/1_dtxt@2x.png') no-repeat;
+      background-size: contain;
+    }
+  }
+
+  .u-parallax-2 {
+    position: relative;
+    height: 1098px;
+    margin-top: 104px;
+  }
+
+  .u-sir-2 {
+    display: block;
+    width: 848px;
+    height: 1098px;
+    background: url('../images/2@2x.png') no-repeat;
+    background-size: contain;
+    position: absolute;
+    left: 120px;
+    top: 0;
+  }
+
+  .u-sir-text-2 {
+    display: block;
+    width: 654px;
+    height: 104px;
+    background: url('../images/2_txt@2x.png') no-repeat;
+    background-size: contain;
+    position: absolute;
+    bottom: 560px;
+    right: 0;
+  }
+
+  .u-sir-word-2 {
+    display: block;
+    width: 656px;
+    height: 560px;
+    background: url('../images/2_shuo@2x.png') no-repeat;
+    background-size: contain;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+}
+
+.u-tip {
+  position: fixed;
+  width: 100%;
+  height: 200px;
+  top: 0;
+  left: 0;
+  background-color: #ccc;
+  color: #000;
+  z-index: 10;
 }

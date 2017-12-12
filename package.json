@@ -46,8 +46,11 @@
     "webpack-merge": "^4.1.0"
   },
   "dependencies": {
+    "hammerjs": "^2.0.8",
+    "install": "^0.10.2",
     "lodash": "^4.17.4",
     "normalize.css": "^7.0.0",
+    "npm": "^5.6.0",
     "parallax-js": "^3.1.0",
     "swiper": "^4.0.7",
     "zepto": "^1.2.0"

@@ -1,8 +1,8 @@
 // @flow
 import './src/assets/css/home.css'
-// import Swiper from 'swiper'
 import { throttle } from 'lodash'
-import 'zepto/src/touch'
+// import 'zepto/src/touch'
+import Hammer from 'hammerjs'
 
 // import Parallax from 'parallax-js'
 
@@ -17,12 +17,17 @@ import 'zepto/src/touch'
 //   mousewheel: true
 // })
 
-const bodyHeight = $('body').height()
+const bodyHeight =  window.innerHeight
 let parllax1 = {}
+let parllax2 = {}
 let startY = 0
 let startX = 0
 let transformY = 0
+// let transform2Y = 0
 let parllaxHisY = 0
+
+let direction = 0 // 未动
+let deltaY = 0 // Y轴方向的滚动
 
 function getAngle (angx, angy) {  
   return Math.atan2(angy, angx) * 180 / Math.PI 
@@ -38,91 +43,110 @@ function getDirection (startx, starty, endx, endy) {
   }
   let angle = getAngle(angx, angy)
   if (angle >= 0 && angle <= 180) {
-      result = 2
-  } else if (angle > -180 && angle < 0) {
       result = 1
+  } else if (angle > -180 && angle < 0) {
+      result = 2
   }
   return result
 }
 
 $(document).on('DOMContentLoaded', function(event) {
   parllax1 = $('#J-parallax-1').offset()
+  parllax2 = $('#J-parallax-2').offset()
   console.info(parllax1)
-})
+  const body = document.querySelector('#app-container')
+  const manager = new Hammer.Manager(body)
+  const Swipe = new Hammer.Swipe()
+  manager.add(Swipe)
 
-// $('body').on('touchstart', function(event) {
-//   startX = event.touches[0].pageX
-//   startY = event.touches[0].pageY
-//   console.info(startX, startY)
-//   alert('123')
-//   if (window.scrollY + bodyHeight - parllax1.top > 0) {
-//     $('#J-parallax-1').find('.u-parallax-item').css({
-//       'transform': 'translate(0, -100px)'
-//     })
-//   }
-// })
+  manager.on('swipe', function(event) {
+    const direction = event.offsetDirection
+    deltaY += event.deltaY
 
-// $('body').on('touchmove', function(event) {
-//   let endX = 0
-//   let endY = 0
-//   endX = event.changedTouches[0].pageX
-//   endY = event.changedTouches[0].pageY
-//   const direction = getDirection(startX, startY, endX, endY)
+    if (deltaY > 0) {
+      deltaY = 0
+    }
 
-//   console.info('move', event.changedTouches)
-//   console.info(startY - endY)
+    $('#J-tip').html(event.deltaY + ',' + direction)
+    
+    if (direction === 16 || direction === 8) {
+      requestAnimationFrame(function(){
+        $(body).css({
+          'transform': `translate(0, ${deltaY}px)`
+        })
+      })
+    }
+
+    if ((parllax1.height / 2 + parllax1.top - bodyHeight) < Math.abs(deltaY) && Math.abs(deltaY) < parllax1.top) {
+      if (direction === 8) {
+        parllaxHisY -= 50
+      } else {
+        parllaxHisY += 50
+      }
+      // parllaxHisY -= (event.deltaY / 4.5)
+      if (parllaxHisY > 0) {
+        parllaxHisY = 0
+      }
+      // $('#J-tip').html(direction + ',' + parllaxHisY)
+      $('#J-parallax-1').find('.u-parallax-item').css({
+        'transform': `translate(0, ${parllaxHisY}px)`
+      })
+    }
+
+    if ((parllax2.height / 2 + parllax2.top - bodyHeight) < Math.abs(deltaY) && Math.abs(deltaY) < parllax2.top) {
+      parllaxHisY -= (event.deltaY / 4.5)
+      if (parllaxHisY > 0) {
+        parllaxHisY = 0
+      }
+      $('#J-parallax-2').find('.u-parallax-item').css({
+        'transform': `translate(0, ${parllaxHisY}px)`
+      })
+    }
+
+  })
+  // $('body').on('touchstart', function(event) {
+  //   startX = event.touches[0].pageX
+  //   startY = event.touches[0].pageY
+  // })
   
-//   if (direction === 1) {
-//     const limit = window.scrollY + bodyHeight - parllax1.top
-//     window.scrollTo(0, startY - endY)
-//     console.info(limit, endY, startY, parllaxHisY)
-//     transformY = endY - startY - parllaxHisY - 55
-//     if ((parllax1.height / 2) < limit && limit < (parllax1.height + bodyHeight.height / 2) ) {
-//       $('#J-parallax-1').find('.u-parallax-item').css({
-//         'transform': `translate(0, -${transformY}px)`
-//       })
-//     }
-//   }
+  // $('body').on('touchmove', function(event) {
+  //   let endX = 0
+  //   let endY = 0
+  //   endX = event.changedTouches[0].pageX
+  //   endY = event.changedTouches[0].pageY
+  //   direction = getDirection(startX, startY, endX, endY)
+  // })
+  
+  // $('body').on('touchend', function(event) {
+  //   let endX = 0
+  //   let endY = 0
+  //   endX = event.changedTouches[0].pageX
+  //   endY = event.changedTouches[0].pageY
+  //   const direction = getDirection(startX, startY, endX, endY)
+  
+  //   transformY = 0 // 重置0
+  //   $('#J-parallax-1').find('.u-parallax-item').forEach(item => {
+  //     let cssTransform = $(item).css('transform')
+  //     if (cssTransform !== 'none') {
+  //       parllaxHisY = parseFloat(cssTransform.substring(15, cssTransform.length - 3))
+  //     }
+  //   })
 
-//   if (direction === 2) {
-//     const limit = window.scrollY + bodyHeight - parllax1.top
-//     window.scrollTo(0, endY - startY)
-//     transformY = endY - startY + parllaxHisY + 55
-//     if ((parllax1.height / 2) < limit && limit < (parllax1.height + parllax1.height / 2) ) {
-//       $('#J-parallax-1').find('.u-parallax-item').css({
-//         'transform': `translate(0, -${transformY}px)`
-//       })
-//     }
-//     console.info(window.scrollY)
-//   }
-// })
+  //   $('#J-parallax-2').find('.u-parallax-item').forEach(item => {
+  //     let cssTransform = $(item).css('transform')
+  //     if (cssTransform !== 'none') {
+  //       parllaxHis2Y = parseFloat(cssTransform.substring(15, cssTransform.length - 3))
+  //     }
+  //   })
+  // })
+  
+  $(window).on('scroll', function(event) {
+    const limit = window.scrollY + bodyHeight - parllax1.top
+    const limit2 = window.scrollY + bodyHeight - parllax2.top
+    event.preventDefault()
+  })
 
-// $('body').on('touchend', function(event) {
-//   let endX = 0
-//   let endY = 0
-//   endX = event.changedTouches[0].pageX
-//   endY = event.changedTouches[0].pageY
-//   const direction = getDirection(startX, startY, endX, endY)
-
-//   transformY = 0 // 重置0
-//   $('#J-parallax-1').find('.u-parallax-item').forEach(item => {
-//     let cssTransform = $(item).css('transform')
-//     if (cssTransform !== 'none') {
-//       parllaxHisY = parseFloat(cssTransform.substring(15, cssTransform.length - 3))
-//     }
-//   })
-//   console.info('end', parllaxHisY)
-//   if (direction === 1) {
-//     console.info('end向上')
-//   }
-
-//   if (direction === 2) {
-//     console.info('end向下')
-//   }
-
-//   console.info(`move,${event}`)
-// })
-
-$(window).on('scroll', function(event) {
-  console.info(event)
+  $(document).on('mousewheel', function(event) {
+    return false
+  })
 })
