@@ -128,8 +128,12 @@ body {
     left: 0;
   }
 
-  .u-parallax-item {
+  .u-parallax-item, .u-anchor {
     transition: all .6s;
+  }
+
+  .u-anchor {
+    margin-top: 100px;
   }
 
   .u-anchor-1 {
@@ -152,7 +156,7 @@ body {
   .u-parallax-2 {
     position: relative;
     height: 1098px;
-    margin-top: 104px;
+    margin-top: 208px;
   }
 
   .u-sir-2 {

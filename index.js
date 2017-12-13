@@ -28,32 +28,19 @@ let parllaxHisY = 0
 
 let direction = 0 // 未动
 let deltaY = 0 // Y轴方向的滚动
-
-function getAngle (angx, angy) {  
-  return Math.atan2(angy, angx) * 180 / Math.PI 
-}
-
-function getDirection (startx, starty, endx, endy) {  
-  let angx = endx - startx
-  let angy = endy - starty
-  let result = 0
-  //如果滑动距离太短
-  if (Math.abs(angx) < 2 && Math.abs(angy) < 2) {
-    return result
-  }
-  let angle = getAngle(angx, angy)
-  if (angle >= 0 && angle <= 180) {
-      result = 1
-  } else if (angle > -180 && angle < 0) {
-      result = 2
-  }
-  return result
-}
+let parallaxArray = [] 
 
 $(document).on('DOMContentLoaded', function(event) {
   parllax1 = $('#J-parallax-1').offset()
-  parllax2 = $('#J-parallax-2').offset()
-  console.info(parllax1)
+  parllax2 = $('#J-parallax-2').offset();
+
+  [1,2].forEach(eleIndex => {
+    parallaxArray.push(Object.assign(
+      {},
+      $(`#J-parallax-${eleIndex}`).offset(),
+      {parllaxHisY: 0, id: `#J-parallax-${eleIndex}`, anchorId: `#J-anchor-${eleIndex}`}))
+  })
+  
   const body = document.querySelector('#app-container')
   const manager = new Hammer.Manager(body)
   const Swipe = new Hammer.Swipe()
@@ -66,8 +53,6 @@ $(document).on('DOMContentLoaded', function(event) {
     if (deltaY > 0) {
       deltaY = 0
     }
-
-    $('#J-tip').html(event.deltaY + ',' + direction)
     
     if (direction === 16 || direction === 8) {
       requestAnimationFrame(function(){
@@ -75,34 +60,32 @@ $(document).on('DOMContentLoaded', function(event) {
           'transform': `translate(0, ${deltaY}px)`
         })
       })
-    }
 
-    if ((parllax1.height / 2 + parllax1.top - bodyHeight) < Math.abs(deltaY) && Math.abs(deltaY) < parllax1.top) {
-      if (direction === 8) {
-        parllaxHisY -= 50
-      } else {
-        parllaxHisY += 50
-      }
-      // parllaxHisY -= (event.deltaY / 4.5)
-      if (parllaxHisY > 0) {
-        parllaxHisY = 0
-      }
-      // $('#J-tip').html(direction + ',' + parllaxHisY)
-      $('#J-parallax-1').find('.u-parallax-item').css({
-        'transform': `translate(0, ${parllaxHisY}px)`
+      parallaxArray.forEach(item => {
+        if ((item.height / 2 + item.top - bodyHeight) < Math.abs(deltaY) && Math.abs(deltaY) < (item.height * 2 + item.top - bodyHeight)) {
+          if (direction === 8) {
+            item.parllaxHisY -= Math.abs(event.deltaY) / 4.5
+          } else {
+            item.parllaxHisY += Math.abs(event.deltaY) / 4.5
+          }
+          if (item.parllaxHisY > 0) {
+            item.parllaxHisY = 0
+          }
+          setTimeout(() => {
+            const anchorY = direction === 8 ? -20 : 20
+            $(`${item.anchorId}`).css({
+              'transform': `translate(0, ${anchorY}px)`
+            })
+          }, 1500)
+          
+          $(`${item.id}`).find('.u-parallax-item').forEach((childItem, index) => {
+            $(childItem).css({
+              'transform': `translate(0, ${item.parllaxHisY}px)`
+            })
+          })
+        }
       })
     }
-
-    if ((parllax2.height / 2 + parllax2.top - bodyHeight) < Math.abs(deltaY) && Math.abs(deltaY) < parllax2.top) {
-      parllaxHisY -= (event.deltaY / 4.5)
-      if (parllaxHisY > 0) {
-        parllaxHisY = 0
-      }
-      $('#J-parallax-2').find('.u-parallax-item').css({
-        'transform': `translate(0, ${parllaxHisY}px)`
-      })
-    }
-
   })
   // $('body').on('touchstart', function(event) {
   //   startX = event.touches[0].pageX
